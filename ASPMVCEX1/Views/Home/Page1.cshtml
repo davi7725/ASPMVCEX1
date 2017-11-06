@@ -1,0 +1,59 @@
+﻿@model ASPMVCEX1.Models.Person
+@{
+    ViewData["Title"] = "Page1";
+}
+
+<h2>Page1</h2>
+
+
+    @using (Html.BeginForm())
+    {
+        <table>
+            <tr>
+                <td>
+                    @Html.Label("First Name: ")
+                </td>
+                <td>
+                    <input id="FName" name="FName" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Last Name: ")
+                </td>
+                <td>
+                    <input id="LName" name="LName" type="text" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Birthday: ")
+                </td>
+                <td>
+                    <input id="Birthday" name="Birthday" type="Date" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Email: ")
+                </td>
+                <td>
+                    <input id="Email" name="Email" type="email" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    @Html.Label("Phone Nr: ")
+                </td>
+                <td>
+                    <input id="PhoneNr" name="PhoneNr" type="tel" />
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <input type="submit" value="Send" />
+                </td>
+            </tr>
+
+        </table>
+    }
