@@ -10,6 +10,14 @@ namespace ASPMVCEX1.Controllers
 {
     public class HomeController : Controller
     {
+
+        private PersonRepository persRepo;
+
+        public HomeController(PersonRepository repo)
+        {
+            this.persRepo = repo;
+        }
+
         public IActionResult Index()
         {
             return View();
@@ -22,23 +30,18 @@ namespace ASPMVCEX1.Controllers
         }
 
         [HttpPost]
-        public IActionResult Page1(Person post)
+        public IActionResult Page1( Person post)
         {
+            persRepo.Add(post);
             HttpContext.Session.Set("sessionPerson", post);
             return View();
         }
 
         public IActionResult Page2()
         {
-            Person p = HttpContext.Session.Get<Person>("sessionPerson");
+            List<Person> listOfPersons = persRepo.GetListOfPersons();
 
-            ViewData["FName"] = p.FName;
-            ViewData["LName"] = p.LName;
-            ViewData["Birthday"] = p.Birthday;
-            ViewData["Email"] = p.Email;
-            ViewData["PhoneNr"] = p.PhoneNr;
-
-            return View();
+            return View(listOfPersons);
         }
         public IActionResult About()
         {

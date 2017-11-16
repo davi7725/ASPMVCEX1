@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using ASPMVCEX1.Models;
 
 namespace ASPMVCEX1
 {
@@ -24,6 +25,8 @@ namespace ASPMVCEX1
             services.AddMvc().AddSessionStateTempDataProvider();
 
             services.AddDistributedMemoryCache();
+
+            services.AddSingleton<PersonRepository>();
 
             services.AddSession(options =>
             {
